@@ -1,4 +1,4 @@
-package com.example.news.service
+package com.example.news.data
 
 data class NewsInfo(
     val source: List<NewsSource>,
@@ -7,6 +7,5 @@ data class NewsInfo(
     val description: String,
     val url: String,
     val urlToImage: String,
-    val publishedAt: String,
-    val content:String
+    val publishedAt: String
 )

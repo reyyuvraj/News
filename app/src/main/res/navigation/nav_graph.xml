@@ -8,26 +8,5 @@
         android:id="@+id/newsCategoryFragment"
         android:name="com.example.news.fragment.NewsCategoryFragment"
         android:label="fragment_news_category"
-        tools:layout="@layout/fragment_news_category" >
-        <action
-            android:id="@+id/action_newsCategoryFragment_to_newsWebFragment"
-            app:destination="@id/newsWebFragment" />
-        <action
-            android:id="@+id/action_newsCategoryFragment_to_newsBriefFragment"
-            app:destination="@id/newsBriefFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/newsBriefFragment"
-        android:name="com.example.news.fragment.NewsBriefFragment"
-        android:label="fragment_news_brief"
-        tools:layout="@layout/fragment_news_brief" >
-        <action
-            android:id="@+id/action_newsBriefFragment_to_newsWebFragment"
-            app:destination="@id/newsWebFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/newsWebFragment"
-        android:name="com.example.news.fragment.NewsWebFragment"
-        android:label="fragment_news_web"
-        tools:layout="@layout/fragment_news_web" />
+        tools:layout="@layout/fragment_news_category" />
 </navigation>

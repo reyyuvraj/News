@@ -1,7 +1,7 @@
-package com.example.news.service
+package com.example.news.data
 
 data class NewsDataItem (
     val status: String,
     val totalResults: Int,
-    val articles: List<NewsInfo>,
+    val articles: List<NewsInfo>
 )
