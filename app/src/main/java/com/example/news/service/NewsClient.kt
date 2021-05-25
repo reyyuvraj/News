@@ -7,13 +7,13 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object NewsClient {
 
-    val newsInstance : NewsService
+    val newsCall : NewsService
     init {
         val retrofit = Retrofit.Builder()
             .baseUrl(baseURL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
-        newsInstance = retrofit.create(NewsService::class.java)
+        newsCall = retrofit.create(NewsService::class.java)
     }
 }
 

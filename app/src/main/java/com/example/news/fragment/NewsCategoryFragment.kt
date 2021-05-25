@@ -27,7 +27,7 @@ class NewsCategoryFragment : Fragment(), NewsCategoryAdapter.OnNewsClick {
     ): View? {
         val view:View = inflater.inflate(R.layout.fragment_news_category, container, false)
         val progressbar:ProgressBar = view.findViewById(R.id.progressBar)
-        val news = NewsClient.newsInstance.getData("in", 1)
+        val news = NewsClient.newsCall.getData("in", 1)
         news.enqueue(object: Callback<NewsDataItem> {
             override fun onResponse(call: Call<NewsDataItem>, response: Response<NewsDataItem>) {
                 val news = response.body()
