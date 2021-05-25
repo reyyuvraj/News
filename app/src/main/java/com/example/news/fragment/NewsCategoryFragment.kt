@@ -1,12 +1,10 @@
 package com.example.news.fragment
 
 import android.os.Bundle
-import android.renderscript.ScriptGroup
 import android.util.Log
 import android.view.*
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.news.R
@@ -21,13 +19,15 @@ import retrofit2.Response
 class NewsCategoryFragment : Fragment(), NewsCategoryAdapter.OnNewsClick {
 
     lateinit var adapter: NewsCategoryAdapter
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.inflate(R.layout.fragment_news_category, container, false)
-        val progressbar: ProgressBar = view.findViewById(R.id.progressBar)
-        val news = NewsClient.service.getData("in",NewsConstants.apiKey)
+        val view:View = inflater.inflate(R.layout.fragment_news_category, container, false)
+        val progressbar:ProgressBar = view.findViewById(R.id.progressBar)
+        val news = NewsClient.newsInstance.getData("in", 1)
         news.enqueue(object: Callback<NewsDataItem> {
             override fun onResponse(call: Call<NewsDataItem>, response: Response<NewsDataItem>) {
                 val news = response.body()
@@ -38,11 +38,12 @@ class NewsCategoryFragment : Fragment(), NewsCategoryAdapter.OnNewsClick {
                     progressbar.visibility = View.GONE
                     recyclerView.adapter = adapter
                     recyclerView.layoutManager =  LinearLayoutManager(context)
+
                 }
             }
 
             override fun onFailure(call: Call<NewsDataItem>, t: Throwable) {
-                Log.d("call", "Error in fetching", t)
+                Log.d("call", "Error", t)
             }
         })
         return view
@@ -52,7 +53,7 @@ class NewsCategoryFragment : Fragment(), NewsCategoryAdapter.OnNewsClick {
         val bundle = Bundle()
         bundle.putString("url",article.url)
         val fragment = NewsWebFragment()
-        Log.d("batao","hii4")
+        Log.d("call","call01")
         fragment.arguments = bundle
         requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment,fragment)
             .addToBackStack("Hello").commit()
@@ -62,5 +63,4 @@ class NewsCategoryFragment : Fragment(), NewsCategoryAdapter.OnNewsClick {
         inflater.inflate(R.menu.drop_down_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
-
 }

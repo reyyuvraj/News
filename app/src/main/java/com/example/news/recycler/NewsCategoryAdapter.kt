@@ -32,13 +32,6 @@ class NewsCategoryAdapter(private val context: Context,
         holder.newsTitle.text = article.title
         Glide.with(context).load(article.urlToImage).into(holder.newsImage)
 
-        holder.itemView.setOnClickListener {
-
-            val builder = CustomTabsIntent.Builder()
-            val customTabsIntent = builder.build()
-            customTabsIntent.launchUrl(context, Uri.parse(article.url))
-        }
-
         holder.itemView.setOnLongClickListener {
             val publishTime: String = article.publishedAt
             val date = publishTime.slice(0..9)
@@ -58,7 +51,7 @@ class NewsCategoryAdapter(private val context: Context,
 
 
     inner class NewsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        val newsSource: TextView = itemView.findViewById(R.id.categorySource)
+        val newsSource: TextView = itemView.findViewById(R.id.categorySourceName)
         val newsTitle: TextView = itemView.findViewById(R.id.categoryTitle)
         val newsImage: ImageView = itemView.findViewById(R.id.categoryImage)
 

@@ -1,22 +1,19 @@
 package com.example.news.service
 
-import com.example.news.service.NewsConstants.Companion.baseURL
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+
+import com.example.news.service.NewsService.Companion.baseURL
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object NewsClient {
 
-    private val retrofit by lazy{
-        Retrofit.Builder()
+    val newsInstance : NewsService
+    init {
+        val retrofit = Retrofit.Builder()
             .baseUrl(baseURL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
-    }
-
-    val service : NewsService by lazy {
-        retrofit.create(NewsService::class.java)
+        newsInstance = retrofit.create(NewsService::class.java)
     }
 }
 

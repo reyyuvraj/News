@@ -1,6 +1,3 @@
 package com.example.news.data
 
-data class NewsSource(
-    val id: String?,
-    val name: String
-)
+data class NewsSource(val name: String)
