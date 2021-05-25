@@ -32,8 +32,8 @@ class NewsCategoryFragment : Fragment(), NewsCategoryAdapter.OnNewsClick {
             override fun onResponse(call: Call<NewsDataItem>, response: Response<NewsDataItem>) {
                 val news = response.body()
                 if(news!=null){
-                    Log.d("call",news.toString())
-                    adapter = NewsCategoryAdapter(context!!,news.articles,this@NewsCategoryFragment)
+                    adapter = NewsCategoryAdapter(context!!,news.articles,
+                        this@NewsCategoryFragment)
                     val recyclerView: RecyclerView = view.findViewById(R.id.newsView)
                     progressbar.visibility = View.GONE
                     recyclerView.adapter = adapter
@@ -43,7 +43,6 @@ class NewsCategoryFragment : Fragment(), NewsCategoryAdapter.OnNewsClick {
             }
 
             override fun onFailure(call: Call<NewsDataItem>, t: Throwable) {
-                Log.d("call", "Error", t)
             }
         })
         return view
